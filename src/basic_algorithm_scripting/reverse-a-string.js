@@ -5,5 +5,12 @@ function reverseString(str) {
     .join('');
 }
 
-var output = reverseString('hello');
-console.log(output);
+function assertEqual(actual, expected) {
+  if (actual === expected) {
+    console.log('PASS');
+  } else {
+    console.log('FAIL');
+  }
+}
+
+assertEqual(reverseString('hello'), 'olleh');
