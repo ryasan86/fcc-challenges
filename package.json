@@ -2,7 +2,7 @@
     "name": "challenges",
     "version": "1.0.0",
     "description": "��#\u0000 \u0000f\u0000c\u0000c\u0000-\u0000c\u0000h\u0000a\u0000l\u0000l\u0000e\u0000n\u0000g\u0000e\u0000s\u0000\r\u0000 \u0000",
-    "main": "seekAndDestroy.js",
+    "main": "script.js",
     "dependencies": {
         "babel-cli": "^6.26.0"
     },
