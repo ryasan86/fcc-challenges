@@ -1,8 +1,10 @@
-function confirmEnding(str, target) {
-  var targetLength = target.length;
-  var strLength = str.length;
-  var newString = str.substr(strLength - targetLength);
-  return target === newString;
+function mutation(arr) {
+  var firstArray = arr[1].toLowerCase().split('');
+  var secondArray = arr[0].toLowerCase().split('');
+
+  return firstArray.every(function(letter) {
+    return secondArray.indexOf(letter) !== -1;
+  });
 }
 
 function assertEqual(actual, expected) {
@@ -13,7 +15,7 @@ function assertEqual(actual, expected) {
   }
 }
 
-assertEqual(confirmEnding('Bastian', 'n'), true);
-assertEqual(confirmEnding('Conner', 'n'), false);
-assertEqual(confirmEnding( 'Walking on water and developing software from a specification are easy if both are frozen', 'specification'), false);
-assertEqual(confirmEnding('He has to give me a new name', 'name'), true);
+assertEqual(mutation(['hello', 'hey']), false);
+assertEqual(mutation(['Alien', 'line']), true);
+assertEqual(mutation(['Mary', 'Army']), true);
+assertEqual(mutation(['voodoo', 'no']), false);
