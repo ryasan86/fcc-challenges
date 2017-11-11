@@ -1,6 +1,14 @@
-function bouncer(arr) {
-  var filteredArray = arr.filter(Boolean);
-  return filteredArray;
+function destroyer(arr) {
+  var args = [...arguments];
+  args.splice(0, 1);
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < args.length; j++) {
+      if (arr[i] === args[j]) {
+        delete arr[i];
+      }
+    }
+  }
+  return arr.filter(Boolean);
 }
 
 function assertEqual(actual, expected) {
@@ -15,5 +23,5 @@ function assertEqual(actual, expected) {
   }
 }
 
-assertEqual(bouncer([7, 'ate', '', false, 9]), [7, 'ate', 9]);
-assertEqual(bouncer([false, null, 0, NaN, undefined, '']), []);
+assertEqual(destroyer([1, 2, 3, 1, 2, 3], 2, 3), [1, 1]);
+assertEqual(destroyer([1, 2, 3, 5, 1, 2, 3], 2, 3), [1, 5, 1]);
