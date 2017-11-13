@@ -1,4 +1,38 @@
 function getIndexToIns(arr, num) {
+  arr.sort(function(num1, num2) {
+    return num1 - num2;
+  });
+
+  arr.forEach((curNum, curIndex) => {
+    if (curNum > num) {
+      arr.splice(curIndex, 0, num);
+    }
+  });
+
+  if (arr.indexOf(num) === -1) {
+    arr.push(num);
+  }
+
+  return arr.indexOf(num);
+}
+
+function assertEqual(actual, expected) {
+  if (actual === expected) {
+    console.log('PASS');
+  } else {
+    console.log('FAIL');
+    console.log(actual);
+  }
+}
+
+assertEqual(getIndexToIns([10, 20, 30, 40, 50], 35), 3);
+assertEqual(getIndexToIns([10, 20, 30, 40, 50], 30), 2);
+assertEqual(getIndexToIns([5, 3, 20, 3], 5), 2);
+assertEqual(getIndexToIns([2, 5, 10], 15), 3);
+assertEqual(getIndexToIns([2, 20, 10], 19), 2);
+
+
+function getIndexToIns(arr, num) {
   // var tempArr = [];
 
   arr.sort(function(a, b) {
