@@ -1,12 +1,18 @@
 function convertToRoman(num) {
-  num = num.toString();
-  // symbols
-  var numbers = [1, 5, 10, 50, 100, 500, 1000];
-  var romans = ['I', 'V', 'X', 'L', 'C', 'D', 'M'];
-  var result = [];
-  // if between 1 and 3
+  var numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  var romans = [ 'M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
 
-  // if between 6 and 9
+  var result = '';
+
+  // debugger;
+
+  for (var i = 0; i < numbers.length; i++) {
+    while (numbers[i] <= num) {
+      result += romans[i];
+      num -= numbers[i];
+    }
+  }
+  return result;
 }
 
 function assertEqual(actual, expected) {
@@ -18,9 +24,11 @@ function assertEqual(actual, expected) {
   }
 }
 
-assertEqual(convertToRoman(2), 'II');
-assertEqual(convertToRoman(3), 'III');
-assertEqual(convertToRoman(4), 'IV');
-assertEqual(convertToRoman(5), 'V');
-assertEqual(convertToRoman(9), 'IX');
-assertEqual(convertToRoman(12), 'XII');
+// assertEqual(convertToRoman(2), 'II');
+// assertEqual(convertToRoman(3), 'III');
+// assertEqual(convertToRoman(4), 'IV');
+// assertEqual(convertToRoman(5), 'V');
+// assertEqual(convertToRoman(9), 'IX');
+assertEqual(convertToRoman(13), 'XIII');
+// var output = convertToRoman(9);
+// console.log(output);
