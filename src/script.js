@@ -1,13 +1,17 @@
 function rot13(str) {
   str = str.split('');
-  var temp = [];
+
   for (var i = 0; i < str.length; i++) {
     var charCode = str[i].charCodeAt(0);
+
     if (charCode < 78) {
       charCode = charCode + 13;
       str[i] = String.fromCharCode(charCode);
+    } else if (charCode >= 78 && charCode <= 90) {
+      console.log(charCode);
     }
   }
+
   return str;
 }
 
