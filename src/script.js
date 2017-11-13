@@ -1,34 +1,32 @@
-function convertToRoman(num) {
-  var numbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
-  var romans = [ 'M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+function translatePigLatin(str) {
+  var array = str.split('');
+  var firstLetterIsVowel = array[0].split('').some(element => {
+    return element.match(/[aeiou]/gi);
+  });
+  var newArray = [];
 
-  var result = '';
-
-  // debugger;
-
-  for (var i = 0; i < numbers.length; i++) {
-    while (numbers[i] <= num) {
-      result += romans[i];
-      num -= numbers[i];
-    }
+  if (!firstLetterIsVowel) {
+    newArray = array.slice(1, array.length);
+    newArray.push(array[0]);
+  } else {
+    newArray = array.slice();
+    newArray.push('w');
   }
-  return result;
+  return newArray.join('') + 'ay';
 }
 
 function assertEqual(actual, expected) {
   if (actual === expected) {
-    console.log('PASS');
+    console.log('PASSED');
+    console.log(actual);
   } else {
-    console.log('FAIL');
+    console.log('FAILED');
     console.log(actual);
   }
 }
 
-// assertEqual(convertToRoman(2), 'II');
-// assertEqual(convertToRoman(3), 'III');
-// assertEqual(convertToRoman(4), 'IV');
-// assertEqual(convertToRoman(5), 'V');
-// assertEqual(convertToRoman(9), 'IX');
-assertEqual(convertToRoman(13), 'XIII');
-// var output = convertToRoman(9);
-// console.log(output);
+assertEqual(translatePigLatin('california'), 'aliforniacay');
+assertEqual(translatePigLatin('eight'), 'eightway');
+assertEqual(translatePigLatin('glove'), 'oveglay');
+assertEqual(translatePigLatin('algorithm'), 'algorithmway');
+assertEqual(translatePigLatin('paragraphs'), 'aragraphspay');

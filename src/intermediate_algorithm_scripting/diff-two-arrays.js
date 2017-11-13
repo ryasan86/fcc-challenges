@@ -17,7 +17,6 @@ function assertEqual(actual, expected) {
     console.log('PASS');
   } else {
     console.log('FAIL');
-    console.log(actual);
   }
 }
 
