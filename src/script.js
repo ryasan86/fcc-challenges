@@ -1,18 +1,20 @@
 function translatePigLatin(str) {
   var array = str.split('');
-  var firstLetterIsVowel = array[0].split('').some(element => {
-    return element.match(/[aeiou]/gi);
-  });
-  var newArray = [];
 
-  if (!firstLetterIsVowel) {
-    newArray = array.slice(1, array.length);
-    newArray.push(array[0]);
-  } else {
-    newArray = array.slice();
-    newArray.push('w');
+  function isFirstVowel(letter) {
+    return letter.match(/[aeiou]/gi);
   }
-  return newArray.join('') + 'ay';
+
+  if (isFirstVowel(array[0])) {
+    return array.join('') + 'way';
+  } else {
+    while (!isFirstVowel(array[0])) {
+      array.push(array[0]);
+      array.splice(0, 1);
+    }
+  }
+
+  return array.join('') + 'ay';
 }
 
 function assertEqual(actual, expected) {
