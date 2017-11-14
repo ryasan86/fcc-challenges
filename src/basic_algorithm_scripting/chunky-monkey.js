@@ -1,7 +1,7 @@
 function chunkArrayInGroups(arr, size) {
   var newArray = [];
   var chunks = [];
-  debugger;
+
   for (var i = 0; i < arr.length; i++) {
     if (i % size !== size - 1) {
       chunks.push(arr[i]);
@@ -15,6 +15,7 @@ function chunkArrayInGroups(arr, size) {
   if (chunks.length !== 0) {
     newArray.push(chunks);
   }
+
   return newArray;
 }
 

@@ -21,7 +21,6 @@ function assertEqual(actual, expected) {
     console.log('PASS');
   } else {
     console.log('FAIL');
-    console.log(actual);
   }
 }
 
@@ -33,8 +32,6 @@ assertEqual(
   rot13('GUR DHVPX OEBJA QBT WHZCRQ BIRE GUR YNML SBK.'),
   'THE QUICK BROWN DOG JUMPED OVER THE LAZY FOX.'
 );
-
-
 
 function rot13(str) {
   var newArr = [];

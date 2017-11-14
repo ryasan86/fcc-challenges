@@ -1,5 +1,6 @@
 function largestOfFour(arr) {
   var newArray = [];
+
   arr.forEach(function(subArr) {
     var largestNumber = subArr[0];
     for (var i = 0; i < subArr.length; i++) {
@@ -9,6 +10,7 @@ function largestOfFour(arr) {
     }
     newArray.push(largestNumber);
   });
+
   return newArray;
 }
 
@@ -17,6 +19,7 @@ function assertEqual(actual, expected) {
   var areEqualValues = actual.every(function(value, index) {
     return value === expected[index];
   });
+
   if (areEqualLength && areEqualValues) {
     console.log('PASS');
   } else {

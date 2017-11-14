@@ -1,6 +1,7 @@
 function destroyer(arr) {
   var args = [...arguments];
   args.splice(0, 1);
+
   for (var i = 0; i < arr.length; i++) {
     for (var j = 0; j < args.length; j++) {
       if (arr[i] === args[j]) {
@@ -8,6 +9,7 @@ function destroyer(arr) {
       }
     }
   }
+
   return arr.filter(Boolean);
 }
 
@@ -16,6 +18,7 @@ function assertEqual(actual, expected) {
   var areEqualValues = actual.every(function(actualValue, index) {
     return actualValue === expected[index];
   });
+
   if (areEqualLength && areEqualValues) {
     console.log('PASS');
   } else {

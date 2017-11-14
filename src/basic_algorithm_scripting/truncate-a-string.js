@@ -1,5 +1,6 @@
 function truncateString(str, num) {
   var newString = '';
+
   if (num <= 3) {
     newString = str.slice(0, num) + '...';
   } else if (num >= str.length) {
@@ -7,6 +8,7 @@ function truncateString(str, num) {
   } else {
     newString = str.slice(0, num - 3) + '...';
   }
+
   return newString;
 }
 

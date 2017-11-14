@@ -21,7 +21,6 @@ function assertEqual(actual, expected) {
     console.log('PASS');
   } else {
     console.log('FAIL');
-    console.log(actual);
   }
 }
 
@@ -31,10 +30,8 @@ assertEqual(getIndexToIns([5, 3, 20, 3], 5), 2);
 assertEqual(getIndexToIns([2, 5, 10], 15), 3);
 assertEqual(getIndexToIns([2, 20, 10], 19), 2);
 
-
 function getIndexToIns(arr, num) {
   // var tempArr = [];
-
   arr.sort(function(a, b) {
     return a - b;
   });
@@ -48,6 +45,7 @@ function getIndexToIns(arr, num) {
       // arr.splice(i, 0, num);
     }
   }
+
   return arr.length;
 }
 

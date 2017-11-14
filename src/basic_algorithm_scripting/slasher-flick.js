@@ -2,6 +2,7 @@ function slasher(arr, howMany) {
   for (var i = 0; i < howMany; i++) {
     arr.shift();
   }
+
   return arr;
 }
 
@@ -10,6 +11,7 @@ function assertEqual(actual, expected) {
   var haveEqualValues = actual.every(function(actualValue, index) {
     return actualValue === expected[index];
   });
+
   if (areEqualLength === haveEqualValues) {
     console.log('PASSED');
   } else {

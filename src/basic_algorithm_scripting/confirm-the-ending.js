@@ -2,6 +2,7 @@ function confirmEnding(str, target) {
   var targetLength = target.length;
   var strLength = str.length;
   var stringToConfirmEnding = str.substr(strLength - targetLength);
+
   return target === stringToConfirmEnding;
 }
 

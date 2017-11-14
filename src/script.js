@@ -1,20 +1,5 @@
-function translatePigLatin(str) {
-  var array = str.split('');
-
-  function isFirstVowel(letter) {
-    return letter.match(/[aeiou]/gi);
-  }
-
-  if (isFirstVowel(array[0])) {
-    return array.join('') + 'way';
-  } else {
-    while (!isFirstVowel(array[0])) {
-      array.push(array[0]);
-      array.splice(0, 1);
-    }
-  }
-
-  return array.join('') + 'ay';
+function fearNotLetter(str) {
+  return str;
 }
 
 function assertEqual(actual, expected) {
@@ -27,8 +12,5 @@ function assertEqual(actual, expected) {
   }
 }
 
-assertEqual(translatePigLatin('california'), 'aliforniacay');
-assertEqual(translatePigLatin('eight'), 'eightway');
-assertEqual(translatePigLatin('glove'), 'oveglay');
-assertEqual(translatePigLatin('algorithm'), 'algorithmway');
-assertEqual(translatePigLatin('paragraphs'), 'aragraphspay');
+var output = fearNotLetter('abce');
+console.log(output);

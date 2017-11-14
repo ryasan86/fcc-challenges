@@ -4,6 +4,7 @@ function palindrome(str) {
     .split('')
     .reverse()
     .join('');
+
   return alphaNumericString === reversed;
 }
 
