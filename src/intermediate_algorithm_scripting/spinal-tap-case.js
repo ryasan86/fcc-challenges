@@ -1,5 +1,3 @@
-'use strict';
-
 function assertEquals(actual, expected) {
   if (actual === expected) {
     console.log('PASSED');
@@ -10,8 +8,7 @@ function assertEquals(actual, expected) {
 }
 
 function spinalCase(str) {
-
-  return str;
+  return str.toLowerCase().replace(/ /g, '-');
 }
 
 // assertEquals(spinalCase('This Is Spinal Tap'), 'this-is-spinal-tap');
