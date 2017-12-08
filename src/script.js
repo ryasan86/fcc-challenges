@@ -1,43 +1,31 @@
-function assertEquals(actual, expected) {
-  if (actual === expected) {
+function assertArrayEquals(actual, expected) {
+  var areEqualLength = actual.length === expected.length;
+  var areEqualItems = actual.every(function(item, i) {
+    return item === expected[i];
+  });
+
+  if (areEqualLength && areEqualItems) {
     console.log('PASSED');
   } else {
     console.log('FAILED');
+    console.log(actual);
   }
 }
 
-function smallestCommons(arr) {
-  function sortArr() {
-    arr.sort(function(a, b) {
-      return a - b;
-    });
-  }
-
-  sortArr();
-  // get range
-  for (var i = arr[0] + 1; i < arr[1]; i++) {
-    arr.splice(i, 0, i);
-  }
-
-  sortArr();
-  // find first occurrence of common nultiple
-  function findGreatestCommonD(numA, numB) {
-    return !numB ? numA : findGreatestCommonD(numB, numA % numB);
-  }
-
-  function findSmallestCommonM(numA, numB) {
-    return numA * numB / findGreatestCommonD(numA, numB);
-  }
-
-  var multiple = arr[0];
-  arr.forEach(function(num) {
-    multiple = findSmallestCommonM(multiple, num);
-  });
-
-  return multiple;
+function dropElements(arr, func) {
+  // Drop them elements.
+  return arr;
 }
 
-assertEquals(smallestCommons([1, 5]), 60);
-assertEquals(smallestCommons([5, 1]), 60);
-assertEquals(smallestCommons([1, 13]), 360360);
-assertEquals(smallestCommons([23, 18]), 6056820);
+assertArrayEquals(
+  dropElements([1, 2, 3, 4], function(n) {
+    return n >= 3;
+  }),
+  [3, 4]
+);
+assertArrayEquals(
+  dropElements([0, 1, 0, 1], function(n) {
+    return n === 1;
+  }),
+  [1, 0, 1]
+);
