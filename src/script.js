@@ -3,32 +3,24 @@ function assertEquals(actual, expected) {
     console.log('PASSED');
   } else {
     console.log('FAILED');
+    console.log(actual);
   }
 }
 
-function binaryAgent(str) {
-  var bits = [128, 64, 32, 16, 8, 4, 2, 1];
+function addTogether() {
+  var sum = 0;
 
-  var charCodes = str.split(' ').map(function(el) {
-    return bits
-      .filter(function(bit, i) {
-        return el[i] === '1';
-      })
-      .reduce(function(bitA, bitB) {
-        return bitA + bitB;
-      });
-  });
+  for (var i = 0; i < arguments.length; i++) {
+    if (typeof arguments[i] === 'number') {
+      sum += arguments[i];
+    } else {
+      return undefined;
+    }
+  }
 
-  return charCodes
-    .map(function(charCode) {
-      return String.fromCharCode(charCode);
-    })
-    .join('');
+  return sum;
 }
 
-assertEquals(
-  binaryAgent(
-    '01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111'
-  ),
-  "Aren't bonfires fun!?"
-);
+assertEquals(addTogether(2, 3), 5);
+assertEquals(addTogether('http://bit.ly/IqT6zt'), undefined);
+// assertEquals(addTogether(2)(3), 5);
