@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trump Quotes AJAX</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,500">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div id="quote-box" class="quote-box">
+
+        <div class="quote-text">
+            <i class="fa fa-quote-left"> </i>
+            <span id="output"></span>
+        </div>
+
+        <div class="quote-author">
+            -
+            <span id="author">Donald Trump</span>
+        </div>
+
+        <div class="buttons">
+            <a id="tweet-quote" class="button" title="Tweet this quote!" href="http://twitter.com" target="_blank">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a id="facebook-quote" class="button" title="Post this quote on tumblr!" href="http://facebook.com" target="_blank">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <button id="submit" class="button" style="float: right">New quote</button>
+        </div>
+
+    </div>
+    <script src="./random-quote.js"></script>
+</body>
+
+</html>
