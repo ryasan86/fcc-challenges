@@ -7,7 +7,7 @@
 
 body {
   background: url(https://openclipart.org/image/2400px/svg_to_png/256532/Donald-Trump-Cartoon.png)
-    no-repeat left scroll;
+    no-repeat left bottom;
   background-size: contain;
   background-color: #333;
   color: #333;
@@ -23,16 +23,6 @@ div {
 i {
   font-size: 1em;
   margin-right: 0.4em;
-}
-
-#quote-box {
-  border-radius: 3px;
-  position: relative;
-  margin: 8% auto auto auto;
-  width: 450px;
-  padding: 40px 50px;
-  display: table;
-  background-color: #fff;
 }
 
 .quote-text {
@@ -53,24 +43,14 @@ i {
   text-align: right;
 }
 
-.buttons {
-  width: 450px;
-  margin: auto;
-  display: block;
-}
-
-.button {
-  height: 38px;
-  border: none;
+#quote-box {
   border-radius: 3px;
-  color: #fff;
-  background-color: #333;
-  outline: none;
-  font-size: 0.85em;
-  padding: 8px 18px 6px 18px;
-  margin-top: 30px;
-  opacity: 1;
-  cursor: pointer;
+  position: relative;
+  margin: 8% auto auto auto;
+  width: 450px;
+  padding: 40px 50px;
+  display: table;
+  background-color: #fff;
 }
 
 #tweet-quote {
@@ -93,4 +73,28 @@ i {
   margin-right: 5px;
   height: 30px;
   width: 40px;
+}
+
+#submit {
+  float: right;
+}
+
+.buttons {
+  width: 450px;
+  margin: auto;
+  display: block;
+}
+
+.button {
+  height: 38px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #333;
+  outline: none;
+  font-size: 0.85em;
+  padding: 8px 18px 6px 18px;
+  margin-top: 30px;
+  opacity: 1;
+  cursor: pointer;
 }

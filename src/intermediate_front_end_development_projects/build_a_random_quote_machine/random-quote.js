@@ -13,13 +13,10 @@ var colors = [
   '#77B1A9',
   '#73A857'
 ];
-
-document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 document.getElementById('submit').addEventListener('click', makeRequest);
 
 function makeRequest() {
   xhr = new XMLHttpRequest();
-
   xhr.onreadystatechange = textContent;
   xhr.open(
     'GET',
@@ -29,23 +26,42 @@ function makeRequest() {
 }
 
 function textContent() {
+  var randomColor = colors[Math.floor(Math.random() * colors.length)];
+  document.body.style.backgroundColor = randomColor;
   try {
+    // wait for finish to finish
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
+        // handle data
         var response = JSON.parse(xhr.responseText);
-        var randomColor = colors[Math.floor(Math.random() * colors.length)];
         document.body.style.backgroundColor = randomColor;
         document.getElementById('output').innerHTML = response.message;
-        document.getElementById('quote-box').style.color = randomColor;
-        document.getElementById('tweet-quote').style.backgroundColor = randomColor;
-        document.getElementById('facebook-quote').style.backgroundColor = randomColor;
-        document.getElementById('submit').style.backgroundColor = randomColor;
+        // color quote box text
+        colorText('colored-text');
+        // color quote box buttons
+        colorButtons('colored-button');
       } else {
         console.log('There was a problem with the request.');
       }
     }
   } catch (e) {
     console.log('Caught Exception: ' + e);
+  }
+}
+
+function colorText(className) {
+  var randomColor = colors[Math.floor(Math.random() * colors.length)];
+  var texts = document.getElementsByClassName(className);
+  for (var i = 0; i < texts.length; i++) {
+    texts[i].style.color = randomColor;
+  }
+}
+
+function colorButtons(className) {
+  var randomColor = colors[Math.floor(Math.random() * colors.length)];
+  var buttons = document.getElementsByClassName(className);
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].style.backgroundColor = randomColor;
   }
 }
 
