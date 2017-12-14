@@ -25,7 +25,12 @@ i {
   margin-right: 0.4em;
 }
 
-.quote-text {
+input {
+  font-size: 1em;
+  border-radius: 3px;
+}
+
+.quoteText {
   text-align: center;
   width: 450px;
   height: auto;
@@ -34,7 +39,7 @@ i {
   font-size: 1.75em;
 }
 
-.quote-author {
+.quoteAuthor {
   width: 450px;
   height: auto;
   clear: both;
@@ -43,7 +48,7 @@ i {
   text-align: right;
 }
 
-#quote-box {
+#quoteBox {
   border-radius: 3px;
   position: relative;
   margin: 8% auto auto auto;
@@ -53,7 +58,7 @@ i {
   background-color: #fff;
 }
 
-#tweet-quote {
+#tweetQuote {
   float: left;
   padding: 0px;
   padding-top: 8px;
@@ -64,7 +69,7 @@ i {
   width: 40px;
 }
 
-#facebook-quote {
+#facebookQuote {
   float: left;
   padding: 0px;
   padding-top: 8px;
@@ -73,10 +78,6 @@ i {
   margin-right: 5px;
   height: 30px;
   width: 40px;
-}
-
-#submit {
-  float: right;
 }
 
 .buttons {

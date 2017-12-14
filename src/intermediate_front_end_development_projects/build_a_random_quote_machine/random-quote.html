@@ -12,28 +12,33 @@
 </head>
 
 <body>
-    <div id="quote-box">
+    <div id="quoteBox">
 
-        <div class="colored-text">
-            <div class="quote-text">
+        <div class="coloredText">
+            <div class="quoteText">
                 <i class="fa fa-quote-left"> </i>
                 <span id="output"></span>
             </div>
 
-            <div class="quote-author">
+            <div class="quoteAuthor">
                 -
                 <span>Donald Trump</span>
             </div>
         </div>
 
         <div class="buttons">
-            <a id="tweet-quote" class="button colored-button" title="Tweet this quote!" href="http://twitter.com" target="_blank">
+            <a id="tweetQuote" class="button coloredButton" title="Tweet this quote!" href="http://twitter.com" target="_blank">
                 <i class="fa fa-twitter"></i>
             </a>
-            <a id="facebook-quote" class="button colored-button" title="Post this quote on facebook!" href="http://facebook.com" target="_blank">
+            <a id="facebookQuote" class="button coloredButton" title="Post this quote on facebook!" href="http://facebook.com" target="_blank">
                 <i class="fa fa-facebook"></i>
             </a>
-            <button id="submit" class="button colored-button">New quote</button>
+            <button id="newQuoteButton" class="button coloredButton">New quote</button>
+            <input id="personalizeInput" class="coloredText" type="text">
+        </div>
+
+        <div>
+            <small id="validateInput"></small>
         </div>
 
     </div>
