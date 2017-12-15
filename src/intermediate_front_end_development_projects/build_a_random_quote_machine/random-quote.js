@@ -17,12 +17,12 @@ function makeRequest() {
   }
 
   xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = textContent;
+  xhr.onreadystatechange = loadData;
   xhr.open('GET', queryStr);
   xhr.send(null);
 }
 
-function textContent() {
+function loadData() {
   try {
     // wait for finish to finish
     if (xhr.readyState === XMLHttpRequest.DONE) {
