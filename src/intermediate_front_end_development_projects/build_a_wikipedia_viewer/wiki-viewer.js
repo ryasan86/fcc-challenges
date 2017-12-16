@@ -1,23 +1,28 @@
-var xhr;
-let term = 'test'; // set term to blank later
-let baseUrl = `https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=${term}`;
+let xhr;
 let search = document.querySelector('#search');
 let input = document.querySelector('#input');
+let output = document.querySelector('#output');
 
 search.addEventListener('click', makeRequest);
 
 function makeRequest() {
-  xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = loadData;
-  xhr.open('GET', baseUrl);
-  xhr.send(null);
+  if (input.value) {
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = loadData;
+    xhr.open('GET',`https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=${input.value}`);
+    xhr.send(null);
+    input.value = '';
+  } else {
+    output.innerHTML = `<h2>Nothing to Search!</h2>`  
+  }
 }
 
 function loadData() {
   try {
-    if (xhr.readystate === XMLHttpRequest.DONE) {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        console.log(xhr.responseText);
+        var response = JSON.parse(xhr.responseText);
+        loadHtml(response);
       } else {
         console.log('Error loading response');
       }
@@ -27,12 +32,22 @@ function loadData() {
   }
 }
 
-function foo(data) {
-  // do stuff with JSON
+function loadHtml(searchResults) {
+  let allData = searchResults.map(function(resultCollection) {
+    return resultCollection;
+  });
+  console.log(allData);
+
+  let content = `<h2>Search Results</h2>
+  <ul>
+    ${allData[1]
+      .map(function(result, i) {
+        return `<li>
+        <h3>${result}</h3>
+        <p>${allData[2][i]}</p>
+        </li>`;
+      })
+      .join('')}
+    </ul>`;
+  output.innerHTML = content;
 }
-
-var script = document.createElement('script');
-script.src = '//example.com/path/to/jsonp?callback=foo';
-
-document.getElementsByTagName('head')[0].appendChild(script);
-// or document.head.appendChild(script) in modern browsers

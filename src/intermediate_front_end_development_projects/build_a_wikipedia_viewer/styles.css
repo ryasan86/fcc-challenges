@@ -1,0 +1,11 @@
+input, button {
+  float: right;
+}
+
+input {
+    width: 30vw;
+}
+
+li {
+    list-style: none;
+}

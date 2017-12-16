@@ -1,11 +1,12 @@
-var xhr;
-var response;
-var body = document.body;
-var personalizeInput = document.querySelector('#personalizeInput');
-var validateInput = document.querySelector('#validateInput');
-var queryStr = '';
+let xhr;
+let response;
+let body = document.body;
+let personalizeInput = document.querySelector('#personalizeInput');
+let validateInput = document.querySelector('#validateInput');
+let newQuoteButton = document.querySelector('#newQuoteButton');
+let queryStr = '';
 
-document.querySelector('#newQuoteButton').addEventListener('click', makeRequest);
+newQuoteButton.addEventListener('click', makeRequest);
 
 function makeRequest() {
   if (personalizeInput.value) {
@@ -42,28 +43,28 @@ function loadData() {
 }
 
 function randomColor() {
-  var chars = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
+  let chars = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
     color += chars[Math.floor(Math.random() * chars.length)];
   }
   return color;
 }
 
 function addColor(textClass, buttonClass) {
-  var getColor = randomColor();
+  let getColor = randomColor();
   // background
   body.style.backgroundColor = getColor;
   // input border
   personalizeInput.style.borderColor = getColor;
-  var texts = document.getElementsByClassName(textClass);
-  var buttons = document.getElementsByClassName(buttonClass);
+  let texts = document.getElementsByClassName(textClass);
+  let buttons = document.getElementsByClassName(buttonClass);
   // text
-  for (var i = 0; i < texts.length; i++) {
+  for (let i = 0; i < texts.length; i++) {
     texts[i].style.color = getColor;
   }
   // buttons
-  for (var i = 0; i < buttons.length; i++) {
+  for (let i = 0; i < buttons.length; i++) {
     buttons[i].style.backgroundColor = getColor;
   }
 }
