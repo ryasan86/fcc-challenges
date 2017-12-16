@@ -33,18 +33,17 @@ function loadData() {
 }
 
 function loadHtml(searchResults) {
-  let allData = searchResults.map(function(resultCollection) {
-    return resultCollection;
-  });
-  console.log(allData);
-
   let content = `<h2>Search Results</h2>
   <ul>
-    ${allData[1]
+    ${searchResults[1]
       .map(function(result, i) {
         return `<li>
+        <p>
+        <a href="${searchResults[3][i]}" target="_blank">
         <h3>${result}</h3>
-        <p>${allData[2][i]}</p>
+        </a>
+        ${searchResults[2][i]}
+        </p>
         </li>`;
       })
       .join('')}
