@@ -8,22 +8,31 @@ let thumbnailData;
 let thumbnailUrl;
 search.addEventListener('click', makeRequest);
 
+function xhrStep(queryStr, term) {
+  xhr.onreadystatechange = loadData;
+  xhr.open('GET', baseUrl + queryStr + term);
+  xhr.send(null);
+}
+
 function makeRequest() {
   if (input.value) {
-    xhr.onreadystatechange = loadData;
-    xhr.open('GET', baseUrl + `action=opensearch&format=json&origin=*&search=${input.value}`);
-    xhr.send(null);
+    xhrStep(`action=opensearch&format=json&origin=*&search=`, input.value);
     input.value = '';
   } else {
-    output.innerHTML = `<h2>Nothing to Search!</h2>`  
+    output.innerHTML = `<h2>Nothing to Search!</h2>`;
   }
+}
+
+function makeThumbnailUrl(term) {
+  term = term.replace(/\s/g, '%20');
+  return term;
 }
 
 function loadData() {
   try {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        let response = JSON.parse(xhr.responseText);
+        response = JSON.parse(xhr.responseText);
         constructHtml(response);
       } else {
         console.log('Error loading response');
@@ -34,39 +43,12 @@ function loadData() {
   }
 }
 
-function makeThumbnailRequest(searchTerm) {
-  searchTerm = searchTerm.replace(/\s/g, '%20');
-  xhr.onreadystatechange = loadThumbnail;
-  xhr.open(
-    'GET',
-    baseUrl +
-      `action=query&formatversion=2&format=json&prop=pageimages&origin=*&titles=${searchTerm}`
-  );
-  xhr.send(null);
-
-  function loadThumbnail() {
-    try {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          response = JSON.parse(xhr.responseText);
-          thumbnailData = response.query.pages[0].thumbnail.source;
-        } else {
-          console.log('Error loading response');
-        }
-      }
-    } catch (e) {
-      console.log('Caught exception: ' + e);
-    }
-  }
-  return thumbnailData;
-}
-
 function constructHtml(searchResults) {
   let content = `<h2>Search Results</h2>
   <ul>
   ${searchResults[1]
     .map(function(result, i) {
-      console.log(makeThumbnailRequest(result));
+      console.log(makeThumbnailUrl(result));
       return `<li>
         <p>
         <a href="${searchResults[3][i]}" target="_blank">
