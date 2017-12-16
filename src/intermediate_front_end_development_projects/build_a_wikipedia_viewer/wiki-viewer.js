@@ -1,31 +1,32 @@
 let xhr = new XMLHttpRequest();
 let baseUrl = `https://en.wikipedia.org/w/api.php?`;
-let search = document.querySelector('#search');
+let searchButton = document.querySelector('#searchButton');
 let input = document.querySelector('#input');
 let output = document.querySelector('#output');
 let response;
-let thumbnailData;
-let thumbnailUrl;
-search.addEventListener('click', makeRequest);
+let content;
+let key;
 
-function xhrStep(queryStr, term) {
-  xhr.onreadystatechange = loadData;
-  xhr.open('GET', baseUrl + queryStr + term);
-  xhr.send(null);
-}
+searchButton.addEventListener('click', makeRequest);
+input.addEventListener('keypress', function(e) {
+  key = e.which || e.keyCode;
+  if (key === 13) {
+    makeRequest();
+  }
+});
 
 function makeRequest() {
   if (input.value) {
-    xhrStep(`action=opensearch&format=json&origin=*&search=`, input.value);
+    xhr.onreadystatechange = loadData;
+    xhr.open(
+      'GET',
+      baseUrl + `action=opensearch&format=json&origin=*&search=` + input.value
+    );
+    xhr.send(null);
     input.value = '';
   } else {
-    output.innerHTML = `<h2>Nothing to Search!</h2>`;
+    output.innerHTML = `<h1>Nothing to Search!</h1>`;
   }
-}
-
-function makeThumbnailUrl(term) {
-  term = term.replace(/\s/g, '%20');
-  return term;
 }
 
 function loadData() {
@@ -44,22 +45,25 @@ function loadData() {
 }
 
 function constructHtml(searchResults) {
-  let content = `<h2>Search Results</h2>
-  <ul>
+  content = `
+  <h1 class="found">Displaying: ${searchResults[1].length} Results</h1>
+    <div class="ui channels">
   ${searchResults[1]
     .map(function(result, i) {
-      console.log(makeThumbnailUrl(result));
-      return `<li>
-        <p>
-        <a href="${searchResults[3][i]}" target="_blank">
-        <h3>${result}</h3>
-        <img src="" alt="${result}"> <br>
-        </a>
-        ${searchResults[2][i]}
-        </p>
-        </li>`;
+      return `
+      <div class="media-content">
+          <div class="content">
+            <p>
+              <a href="${searchResults[3][i]}" target="_blank">
+                <h3>${result}</h3>
+              </a>
+              ${searchResults[2][i]}
+            </p>
+          </div>
+      </div>`;
     })
     .join('')}
-    </ul>`;
+    </div>`;
+
   output.innerHTML = content;
 }

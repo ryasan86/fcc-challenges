@@ -6,16 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Wiki Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
     <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div>
-        <input id="input" type="text">
-        <button id="search">Search</button>
+    <div class="controlBox">
+        <div class="field has-addons">
+            <div class="control">
+                <input id="input" class="input" type="text" placeholder="Search Wiki...">
+            </div>
+            <div class="control">
+                <a id="searchButton" class="button is-info">
+                    <span class="icon is-medium is-left">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <a class="randomArticle" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Random Article</a>
     </div>
 
-    <div id="output">
+    <div class="columns">
+        <div class="column is-2">
+        </div>
+        <div class="column is-8">
+            <div id="output">
+            </div>
+        </div>
+        <div class="column is-2">
+        </div>
     </div>
 
     <script src="./wiki-viewer.js"></script>
