@@ -1,14 +1,13 @@
 let xhr;
-let response;
 let body = document.body;
 let personalizeInput = document.querySelector('#personalizeInput');
 let validateInput = document.querySelector('#validateInput');
 let newQuoteButton = document.querySelector('#newQuoteButton');
-let queryStr = '';
 
 newQuoteButton.addEventListener('click', makeRequest);
 
 function makeRequest() {
+  let queryStr = '';
   if (personalizeInput.value) {
     queryStr = `https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q=${personalizeInput.value}`;
     personalizeInput.remove();
@@ -29,7 +28,7 @@ function loadData() {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
         // handle data
-        response = JSON.parse(xhr.responseText);
+        let response = JSON.parse(xhr.responseText);
         document.getElementById('output').innerHTML = response.message;
         // add color to background and quote box
         addColor('coloredText', 'coloredButton');
