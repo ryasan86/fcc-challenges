@@ -6,9 +6,7 @@ let output = document.querySelector('#output');
 searchButton.addEventListener('click', makeRequest);
 input.addEventListener('keypress', function(e) {
   let key = e.which || e.keyCode;
-  if (key === 13) {
-    makeRequest();
-  }
+  key === 13 ? makeRequest() : null;
 });
 
 function makeRequest() {

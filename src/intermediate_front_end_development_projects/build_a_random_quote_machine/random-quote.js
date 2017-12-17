@@ -5,6 +5,10 @@ let validateInput = document.querySelector('#validateInput');
 let newQuoteButton = document.querySelector('#newQuoteButton');
 
 newQuoteButton.addEventListener('click', makeRequest);
+personalizeInput.addEventListener('keypress', function(e) {
+  let key = e.which || e.keyCode;
+  return key === 13 ? makeRequest() : null;
+});
 
 function makeRequest() {
   let queryStr = '';
