@@ -1,15 +1,11 @@
-let xhr = new XMLHttpRequest();
-let baseUrl = `https://en.wikipedia.org/w/api.php?`;
+let xhr;
 let searchButton = document.querySelector('#searchButton');
 let input = document.querySelector('#input');
 let output = document.querySelector('#output');
-let response;
-let content;
-let key;
 
 searchButton.addEventListener('click', makeRequest);
 input.addEventListener('keypress', function(e) {
-  key = e.which || e.keyCode;
+  let key = e.which || e.keyCode;
   if (key === 13) {
     makeRequest();
   }
@@ -17,6 +13,8 @@ input.addEventListener('keypress', function(e) {
 
 function makeRequest() {
   if (input.value) {
+    let baseUrl = `https://en.wikipedia.org/w/api.php?`;
+    xhr = new XMLHttpRequest();
     xhr.onreadystatechange = loadData;
     xhr.open(
       'GET',
@@ -33,7 +31,7 @@ function loadData() {
   try {
     if (xhr.readyState === XMLHttpRequest.DONE) {
       if (xhr.status === 200) {
-        response = JSON.parse(xhr.responseText);
+        let response = JSON.parse(xhr.responseText);
         constructHtml(response);
       } else {
         console.log('Error loading response');
@@ -45,7 +43,7 @@ function loadData() {
 }
 
 function constructHtml(searchResults) {
-  content = `
+  let content = `
   <h1 class="found">Displaying: ${searchResults[1].length} Results</h1>
     <div class="ui channels">
   ${searchResults[1]
