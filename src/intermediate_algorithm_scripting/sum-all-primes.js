@@ -37,3 +37,30 @@ function sumPrimes(num) {
 
 assertEquals(sumPrimes(10), 17);
 assertEquals(sumPrimes(977), 73156);
+
+// 'should find the nth prime'
+function findNthPrime(num) {
+  let i = 1;
+  let count = 0;
+  let primes = [];
+  
+  while (count < num) {
+    i++;
+    if (isPrime(i)) {
+      primes.push(i);
+      count++;
+    }
+  }
+  return primes[num - 1];
+}
+
+function isPrime(num) {
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+assertEquals(findNthPrime(1001), 7927);
